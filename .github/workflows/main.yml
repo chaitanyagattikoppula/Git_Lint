@@ -37,4 +37,17 @@ jobs:
           name: unit-test-report
           path: app/build/reports/lint-results-debug.html
 
+  android-test:
+    needs: [ lint ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: upload html test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit-test-report
+          path: app/build/reports/lint-results-debug.html
+
 
