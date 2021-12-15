@@ -21,9 +21,6 @@ jobs:
       - name: Checkout The Code
         uses: actions/checkout@v2
 
-      - name: Run Lint
-        run: ./gradlew lintDebug
-
       - name: upload html test report
         uses: actions/upload-artifact@v2
         with:
