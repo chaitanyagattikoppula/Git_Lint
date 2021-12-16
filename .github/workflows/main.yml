@@ -37,17 +37,23 @@ jobs:
           name: unit-test-report
           path: app/build/reports/lint-results-debug.html
 
-  android-test:
+  instrumentation:
     needs: [ lint ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      - name: upload html test report
+      - name: Run espresso test
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
+
+      - name: Upload test report
         uses: actions/upload-artifact@v2
         with:
-          name: unit-test-report
-          path: app/build/reports/lint-results-debug.html
+          name: instrumentation_test_report
+          path: app/build/reports/androidTests/connected
 
 
