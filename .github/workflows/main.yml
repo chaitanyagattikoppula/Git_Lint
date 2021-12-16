@@ -37,8 +37,8 @@ jobs:
           name: unit-test-report
           path: app/build/reports/lint-results-debug.html
 
-  instrumentation:
-    needs: [ lint ]
+  instrumentation_test:
+    needs: [ unit-test ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -54,6 +54,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: instrumentation_test_report
-          path: app/build/reports/androidTests/connected
+          path: app/build/reports/androidTests/connected/
 
 
